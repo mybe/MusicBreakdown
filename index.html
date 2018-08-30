@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto+Sans'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto+Sans|Advent+Pro:500'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -36,10 +36,9 @@
 
     <input type="file" id="input"/><br>
 
-
-
-    <p class="MB-text-file">File:&nbsp;</p><output id="list"><i>(no file selected)</i></output>
+    <p class="MB-text">File:&nbsp;</p><output id="list"><i>(no file selected)</i></output>
     <audio id="sound" controls></audio>
+    <br><p class="MB-text">Tempo:&nbsp;</p><span id="output"></span>
 
     <div id="waveform" class="rainbow-color"></div>
 
@@ -59,8 +58,6 @@
         </button>
         <br>
     </div>
-
-    <p>Tempo: <span id="output"></span></p>
 
     <hr style="width: 90%;" class="rainbow-color-HR">
     <footer>
