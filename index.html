@@ -20,20 +20,16 @@
 <body>
 
 <div class="MB-master">
-
     <p class="MB-title-text">Welcome to MusicBreakdown</p>
 
     <div id="dropContainer" class="drop_zone rainbow-color-dragNdrop">
          <p class="MB-dragNdrop-text">drag &amp; drop audio file here</p>
     </div>
     <script src="loadfile.js" type="text/javascript"></script>
-
     <br>or&nbsp;
-    
     <label for="input" class="custom-file-upload rainbow-color">
         <i class="fa fa-cloud-upload"></i> upload audio file
     </label>
-
     <input type="file" id="input" accept="audio/*"/><br>
 
     <p class="MB-text">File:&nbsp;</p><output id="list"><i>(no file selected)</i></output>
@@ -41,33 +37,40 @@
     <br><p class="MB-text">Tempo:&nbsp;</p><span id="output"></span>
 
     <div id="waveform" class="rainbow-color"></div>
-
-    <div class="container" style="text-align: center">
+    <div class="container">
         <button class="rainbow-color-controllerBTN MB-controllerbtn" onclick="wavesurfer.playPause();changePlayPauseIcon()">
         <i id="playpauseicon" class="fas fa-play"></i>
         </button>
 
         <button class="rainbow-color-controllerBTN MB-controllerbtn" onclick="wavesurfer.skipForward(5)">
-            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-forward"></i>
         </button>
         <button class="rainbow-color-controllerBTN MB-controllerbtn" onclick="wavesurfer.skipBackward(5)">
-            <i class="fas fa-step-backward"></i>
+            <i class="fas fa-backward"></i>
         </button>
+        <div class="dropdown">
+        <i class="fas fa-sliders-h dropbtn rainbow-color-controllerBTN MB-controllerbtn" onclick="settingsDropdown()"></i>
+            <div id="dropdownClass" class="dropdown-content">
+                <a href="#" onclick="wavesurfer.setPlaybackRate(0.5)">Speed: 0.5</a>
+                <a href="#" onclick="wavesurfer.setPlaybackRate(1)">Speed: 1.0</a>
+                <a href="#" onclick="wavesurfer.setPlaybackRate(1.5)">Speed: 1.5</a>
+                <a href="#" onclick="wavesurfer.setPlaybackRate(2)">Speed: 2.0</a>
+            </div>
+        </div>
+        <button style="display: inline-block" class="rainbow-color-controllerBTN MB-controllerbtn" onmouseover="showVolBox()" onmouseout="hideVolBox()">
+            <i id="mutevolumeicon" class="fas fa-volume-up"></i>
+        </button>
+        <div class="volbox" onmouseover="showVolBox()" onmouseout="hideVolBox()">
+            <input class="slider rainbow-color-controllerBTN" id="volume" type="range" min="0" max="1" value="1" step="0.1">
+        </div>
         <button class="rainbow-color-controllerBTN MB-controllerbtn" onclick="wavesurfer.stop();wavesurfer.play()">
             <i class="fas fa-redo-alt"></i>
         </button>
-        <button style="display: inline-block" class="rainbow-color-controllerBTN MB-controllerbtn" onmouseover="runMe()" onmouseout="runMe2()">
-            <i id="mutevolumeicon" class="fas fa-volume-up"></i>
-        </button>
-        <div class="volbox" onmouseover="runMe()" onmouseout="runMe2()">
-            <input class="slider rainbow-color-controllerBTN" id="volume" type="range" min="0" max="1" value="1" step="0.1">
-        </div>
     </div>
     <br>
 
     <footer>
     <hr style="width: 90%;" class="rainbow-color-HR">
-
         <p class="MB-footer-text">made by henry jack</p>
         &nbsp;//&nbsp;
         <p class="MB-footer-text">&copy; <a class="MB-footer-link rainbow-color-footerlink" href="https://scono.co">scono</a>, 2017-2018</p><br>

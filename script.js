@@ -16,24 +16,7 @@ function changePlayPauseIcon() {
         }}
 }
 
-var currentMuteVolumeIcon = 'vol';
-function changeMuteVolumeIcon() {
-    var mutevolumeicon = document.getElementById("mutevolumeicon");
-    if (currentMuteVolumeIcon === 'vol') {
-        $(mutevolumeicon).removeClass('fas fa-volume-up').addClass('fas fa-volume-off');
-        currentMuteVolumeIcon = 'mute';
-
-        alert(getVolume());
-    }
-
-    else if (currentMuteVolumeIcon === 'mute') {
-        $(mutevolumeicon).removeClass('fas fa-volume-off').addClass('fas fa-volume-up');
-        currentMuteVolumeIcon = 'vol';
-    }
-}
-
 var wavesurfer = WaveSurfer.create({
-
   container: '#waveform',
   waveColor: '#fff',
   progressColor: '#ccc',
@@ -43,7 +26,6 @@ var wavesurfer = WaveSurfer.create({
   height: '200',
   plugins: 'Cursor',
   responsive: 'true'
-
 });
 
 var loadSong;
@@ -52,9 +34,11 @@ input.onchange = function(e){
     sound.src = URL.createObjectURL(this.files[0]);
     loadSong = sound.src = URL.createObjectURL(this.files[0]);
     wavesurfer.load(loadSong);
-
-    // not really needed in this exact case, but since it is really important in other cases,
-    // don't forget to revoke the blobURI when you don't need it
+    var playpauseicon = document.getElementById("playpauseicon");
+    if (currentPlayPauseIcon === 'pause') {
+        $(playpauseicon).removeClass('fa fa-pause').addClass('fa fa-play');
+        currentPlayPauseIcon = 'play';
+    }
     sound.onend = function(e) {
       URL.revokeObjectURL(this.src);
     }
@@ -71,11 +55,6 @@ input.onchange = function(e){
         fileBit = ' MB ';
     }
     var roundedFileSize = Math.round(newFileSize);
-
-   // if ((this.files[0].name.split('.').pop() !== 'mp3') || (this.files[0].name.split('.').pop() !== 'wav')) {
-      // if (!(this.files[0].name.split('.').pop() !== 'mp3' || this.files[0].name.split('.').pop() !== 'wav'))
-     //   alert('Must upload an audio file!');
-  //  }
 
     if (this.files[0].name.split('.').pop() === 'mp3' 
     || this.files[0].name.split('.').pop() === 'wav'
@@ -108,18 +87,8 @@ wavesurfer.on("ready",function(){var e=[{f:32,type:"lowshelf"},{f:64,type:"peaki
   
 // Minified tempo code
 function prepare(e){output.innerHTML = '<p style="color: #6598ed; display: inline-block">Calculating tempo..</p>';var t=new OfflineAudioContext(1,e.length,e.sampleRate),n=t.createBufferSource();n.buffer=e;var r=t.createBiquadFilter();r.type="lowpass",n.connect(r),r.connect(t.destination),n.start(0),t.startRendering(),t.oncomplete=function(e){process(e)}}
-
 function process(e){output.innerHTML = '<p style="color: #ea021d; display: inline-block">Error [Could not calculate tempo: file has no tempo]</p>';var r=e.renderedBuffer.getChannelData(0),n=arrayMax(r),t=arrayMin(r),a=getPeaksAtThreshold(r,t+.98*(n-t)),o=countIntervalsBetweenNearbyPeaks(a),u=groupNeighborsByTempo(o);u.sort(function(e,r){return r.count-e.count}),u.length&&(output.innerHTML=u[0].tempo)}
-/*
-if (u[0].tempo == null) {
-    alert('gfrgotfjkgitjiojoij');
-}
-
-alert(u[0].tempo);
-if (u[0].tempo < 0) { alert("bad tempo");}
-  */
 function getPeaksAtThreshold(r,n){for(var t=[],o=r.length,e=0;e<o;)r[e]>n&&(t.push(e),e+=1e4),e++;return t}function countIntervalsBetweenNearbyPeaks(r){var n=[];return r.forEach(function(t,o){for(var e=0;e<10;e++){var u=r[o+e]-t,a=n.some(function(r){if(r.interval===u)return r.count++});isNaN(u)||0===u||a||n.push({interval:u,count:1})}}),n}function groupNeighborsByTempo(r){var n=[];return r.forEach(function(r){var t=60/(r.interval/44100);if(0!==(t=Math.round(t))){for(;t<90;)t*=2;for(;t>180;)t/=2;n.some(function(n){if(n.tempo===t)return n.count+=r.count})||n.push({tempo:t,count:r.count})}}),n}function arrayMin(r){for(var n=r.length,t=1/0;n--;)r[n]<t&&(t=r[n]);return t}function arrayMax(r){for(var n=r.length,t=-1/0;n--;)r[n]>t&&(t=r[n]);return t}
-
 
 var volumeInput = document.querySelector('#volume');
     var onChangeVolume = function (e) {
@@ -129,10 +98,30 @@ var volumeInput = document.querySelector('#volume');
   volumeInput.addEventListener('input', onChangeVolume);
   volumeInput.addEventListener('change', onChangeVolume);
 
-function runMe() {
-    $('.volbox').css('display', 'inline-block');
+function showVolBox() { $('.volbox').css('display', 'inline-block'); }
+function hideVolBox() { $('.volbox').css('display', 'none'); }
+
+
+
+
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function settingsDropdown() {
+    document.getElementById("dropdownClass").classList.toggle("show");
 }
 
-function runMe2() {
-    $('.volbox').css('display', 'none');
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }

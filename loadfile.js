@@ -13,4 +13,3 @@ dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
     evt.preventDefault();
 
   };
-
