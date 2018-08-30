@@ -19,8 +19,8 @@ function changePlayPauseIcon() {
 var wavesurfer = WaveSurfer.create({
 
   container: '#waveform',
-  waveColor: '#ed213a',
-  progressColor: '#93291e',
+  waveColor: '#fff',
+  progressColor: '#ccc',
   barWidth: '1.5',
   cursorColor: '#fff',
   cursorWidth: '1',
@@ -57,9 +57,9 @@ input.onchange = function(e){
     var roundedFileSize = Math.round(newFileSize);
 
     var output = [];
-    output.push('<li><strong>', escape(this.files[0].name), '</strong> (', this.files[0].type || 'n/a', ') - ',
-    roundedFileSize, fileBit,'</li>');
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    output.push(escape(this.files[0].name), '</strong> (', this.files[0].type || 'n/a', ') - ',
+    roundedFileSize, fileBit);
+    document.getElementById('list').innerHTML = output.join('');
 
     // tempo calculation
     var file = this.files[0];

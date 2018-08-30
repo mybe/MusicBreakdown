@@ -2,9 +2,53 @@
 
 .MB-master { text-align: center; font-family: 'Noto Sans', arial, sans-serif; color: #fff; }
 body { background: #161616; }
-
 #waveform { border: 1px solid white; margin: 5px; }
-
-.drop_zone { height: 150px; width: 500px; max-width: 80%; margin: 0 auto; border: 2px dashed gray; padding: 15px 5px 5px 5px; }
-
+.drop_zone { height: 125px; width: 400px; max-width: 80%; margin: 0 auto; padding: 15px 5px 5px 5px; }
 #sound { display: none; }
+input[type="file"] { display: none; }
+.custom-file-upload { border: 1px solid #ccc; display: inline-block; padding: 6px 12px; cursor: pointer; }
+.MB-text-file { display: inline-block; margin: 10px 0px; font-weight: bold; letter-spacing: 1px; }
+.MB-controllerbtn { color: #fff; padding: 5px 10px; border-radius: 4px; border: none; margin: 4px; }
+.MB-dragNdrop-text { margin-top: 35px; font-style: italic; }
+.MB-title-text { font-size: 2em; margin: 15px; }
+.MB-footer-text { display: inline-block; font-size: 15px; font-style: italic; }
+
+@-webkit-keyframes rainbow { 
+    0% { border: 2px solid rgb(165, 15, 10); } 
+    20% { border: 2px solid rgb(183, 80, 7); } 
+    40% { border: 2px solid rgb(193, 165, 3); } 
+    60% { border: 2px solid rgb(27, 117, 7); } 
+    80% { border: 2px solid rgb(48, 104, 165); } 
+    100% { border: 2px solid rgb(95, 30, 140); } 
+}
+.rainbow-color { -webkit-animation: rainbow 40s infinite alternate; }
+
+@-webkit-keyframes rainbow-controllerBTN { 
+    0% { background: rgb(165, 15, 10); } 
+    20% { background: rgb(183, 80, 7); } 
+    40% { background: rgb(193, 165, 3); } 
+    60% { background: rgb(27, 117, 7); } 
+    80% { background: rgb(48, 104, 165); } 
+    100% { background: rgb(95, 30, 140); } 
+}
+.rainbow-color-controllerBTN { -webkit-animation: rainbow-controllerBTN 40s infinite alternate; color: #fff; }
+
+@-webkit-keyframes rainbow-HR { 
+    0% { border: 1px solid rgb(165, 15, 10); } 
+    20% { border: 1px solid rgb(183, 80, 7); } 
+    40% { border: 1px solid rgb(193, 165, 3); } 
+    60% { border: 1px solid rgb(27, 117, 7); } 
+    80% { border: 1px solid rgb(48, 104, 165); } 
+    100% { border: 1px solid rgb(95, 30, 140); } 
+}
+.rainbow-color-HR { -webkit-animation: rainbow-HR 40s infinite alternate; }
+
+@-webkit-keyframes rainbow-dragNdrop { 
+    0% { border: 2px dashed rgb(165, 15, 10); } 
+    20% { border: 2px dashed rgb(183, 80, 7); } 
+    40% { border: 2px dashed rgb(193, 165, 3); } 
+    60% { border: 2px dashed rgb(27, 117, 7); } 
+    80% { border: 2px dashed rgb(48, 104, 165); } 
+    100% { border: 2px dashed rgb(95, 30, 140); } 
+}
+.rainbow-color-dragNdrop { -webkit-animation: rainbow-dragNdrop 40s infinite alternate; }
