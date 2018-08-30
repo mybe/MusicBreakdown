@@ -1,3 +1,10 @@
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+    // Great success! All the File APIs are supported.
+   
+  } else {
+    alert('The File APIs are not fully supported in this browser.');
+  }
 
 //sound.src = URL.createObjectURL(this.files[0])
 
@@ -15,22 +22,39 @@ var wavesurfer = WaveSurfer.create({
 
 });
 
-function loadSong() {
-    var getUserSong = document.getElementById("userSongForm").value;
-    alert('Song loaded successfully');
-    var SongToPlay = getUserSong;
-    wavesurfer.load(SongToPlay);
-}
+var loadSong;
+input.onchange = function(e){
+    var sound = document.getElementById('sound');
+    sound.src = URL.createObjectURL(this.files[0]);
+    loadSong = sound.src = URL.createObjectURL(this.files[0]);
+    wavesurfer.load(loadSong);
 
-// https://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3
+    // not really needed in this exact case, but since it is really important in other cases,
+    // don't forget to revoke the blobURI when you don't need it
+    sound.onend = function(e) {
+      URL.revokeObjectURL(this.src);
+    }
 
-// Minified wavesurfer code
-wavesurfer.on("ready",function(){var e=[{f:32,type:"lowshelf"},{f:64,type:"peaking"},{f:125,type:"peaking"},{f:250,type:"peaking"},{f:500,type:"peaking"},{f:1e3,type:"peaking"},{f:2e3,type:"peaking"},{f:4e3,type:"peaking"},{f:8e3,type:"peaking"},{f:16e3,type:"highshelf"}].map(function(e){var t=wavesurfer.backend.ac.createBiquadFilter();return t.type=e.type,t.gain.value=0,t.Q.value=1,t.frequency.value=e.f,t});wavesurfer.backend.setFilters(e);var t=document.querySelector("#equalizer");e.forEach(function(e){var a=document.createElement("input");wavesurfer.util.extend(a,{type:"range",min:-40,max:40,value:0,title:e.frequency.value}),a.style.display="inline-block",a.setAttribute("orient","vertical"),t.appendChild(a);var n=function(t){e.gain.value=~~t.target.value};a.addEventListener("input",n),a.addEventListener("change",n)}),wavesurfer.filters=e});
+    var fileSize = this.files[0].size;
+    var newFileSize;
+    var fileBit = ' bytes ';
+    if (fileSize > 1000) {
+        newFileSize = fileSize/1024;
+        fileBit = ' KB ';
+    }
+    if (fileSize > 100000) {
+        newFileSize = fileSize/1024/1024;
+        fileBit = ' MB ';
+    }
+    var roundedFileSize = Math.round(newFileSize);
 
-audio_file.onchange = function() {
+    var output = [];
+    output.push('<li><strong>', escape(this.files[0].name), '</strong> (', this.files[0].type || 'n/a', ') - ',
+    roundedFileSize, fileBit,'</li>');
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+    // tempo calculation
     var file = this.files[0];
-    wavesurfer.load(file);
-    alert('You are loading ' + file)
     var reader = new FileReader();
     var context = new(window.AudioContext || window.webkitAudioContext)();
     reader.onload = function() {
@@ -39,7 +63,12 @@ audio_file.onchange = function() {
       });
     };
     reader.readAsArrayBuffer(file);
-  };
+
+  }
+
+
+// Minified wavesurfer code
+wavesurfer.on("ready",function(){var e=[{f:32,type:"lowshelf"},{f:64,type:"peaking"},{f:125,type:"peaking"},{f:250,type:"peaking"},{f:500,type:"peaking"},{f:1e3,type:"peaking"},{f:2e3,type:"peaking"},{f:4e3,type:"peaking"},{f:8e3,type:"peaking"},{f:16e3,type:"highshelf"}].map(function(e){var t=wavesurfer.backend.ac.createBiquadFilter();return t.type=e.type,t.gain.value=0,t.Q.value=1,t.frequency.value=e.f,t});wavesurfer.backend.setFilters(e);var t=document.querySelector("#equalizer");e.forEach(function(e){var a=document.createElement("input");wavesurfer.util.extend(a,{type:"range",min:-40,max:40,value:0,title:e.frequency.value}),a.style.display="inline-block",a.setAttribute("orient","vertical"),t.appendChild(a);var n=function(t){e.gain.value=~~t.target.value};a.addEventListener("input",n),a.addEventListener("change",n)}),wavesurfer.filters=e});
   
   function prepare(buffer) {
     var offlineContext = new OfflineAudioContext(1, buffer.length, buffer.sampleRate);
@@ -157,3 +186,4 @@ audio_file.onchange = function() {
     }
     return max;
   }
+

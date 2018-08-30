@@ -4,3 +4,7 @@
 body { background: #161616; }
 
 #waveform { border: 1px solid white; margin: 5px; }
+
+.drop_zone { height: 150px; width: 500px; max-width: 80%; margin: 0 auto; border: 2px dashed gray; padding: 15px 5px 5px 5px; }
+
+#sound { display: none; }

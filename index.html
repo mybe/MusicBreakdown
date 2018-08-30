@@ -22,17 +22,17 @@
 <div class="MB-master">
 
     <p>Welcome to MusicBreakdown</p>
-    <p style="font-size: 35px" >v2</p>
-    <br>
-    <p>please link a song to breakdown</p>
-    <br>
-    <input type="text" id="userSongForm">
-    <button onclick="loadSong()" class="btn btn-success">submit song</button>
-    <br>
-    <br>
-    <p>or, upload an mp3 file</p>
-    <input class="btn btn-primary" id="audio_file" type="file" accept="audio/*">
-    
+    <p style="font-size: 35px" >v3</p>
+
+    <div id="dropContainer" class="drop_zone">
+         drag &amp; drop mp3 here
+    </div>
+    <script src="loadfile.js" type="text/javascript"></script>
+
+    <br><input type="file" id="input"/><br>
+    <output id="list"></output>
+    <audio id="sound" controls></audio>
+
 
     <div id="waveform"></div>
 
@@ -53,9 +53,7 @@
         <br>
     </div>
 
-<p>
-  Tempo: <span id="output"></span>
-</p>
+    <p>Tempo: <span id="output"></span></p>
 
 </div>
 
