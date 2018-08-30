@@ -10,9 +10,8 @@ input[type="file"] { display: none; }
 .MB-text { display: inline-block; margin: 5px 0px; font-weight: bold; letter-spacing: 1px; }
 .MB-controllerbtn { color: #fff; padding: 5px 10px; border-radius: 4px; border: none; margin: 4px; }
 .MB-dragNdrop-text { margin-top: 35px; font-style: italic; }
-.MB-title-text { font-size: 2em; margin: 15px; font-family: 'Advent Pro', sans-serif; }
-.MB-footer-text { display: inline-block; font-size: 15px; font-style: italic; }
-
+.MB-title-text { font-size: 2em; margin: 10px; font-family: 'Advent Pro', arial, sans-serif; }
+.MB-footer-text { display: inline-block; font-size: 15px; font-style: italic; font-family: 'Advent Pro', arial, sans-serif; letter-spacing: 1px; }
 @-webkit-keyframes rainbow { 
     0% { border: 2px solid rgb(165, 15, 10); } 
     20% { border: 2px solid rgb(183, 80, 7); } 
