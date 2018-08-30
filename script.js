@@ -19,21 +19,18 @@ function loadSong() {
     var getUserSong = document.getElementById("userSongForm").value;
     alert('Song loaded successfully');
     var SongToPlay = getUserSong;
- //   wavesurfer.load(SongToPlay);
- wavesurfer.load(SongToPlay);
+    wavesurfer.load(SongToPlay);
 }
 
-
-//https://www.youtube.com/watch?v=GTISI3Bg4Mc
 // https://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3
 
 // Minified wavesurfer code
 wavesurfer.on("ready",function(){var e=[{f:32,type:"lowshelf"},{f:64,type:"peaking"},{f:125,type:"peaking"},{f:250,type:"peaking"},{f:500,type:"peaking"},{f:1e3,type:"peaking"},{f:2e3,type:"peaking"},{f:4e3,type:"peaking"},{f:8e3,type:"peaking"},{f:16e3,type:"highshelf"}].map(function(e){var t=wavesurfer.backend.ac.createBiquadFilter();return t.type=e.type,t.gain.value=0,t.Q.value=1,t.frequency.value=e.f,t});wavesurfer.backend.setFilters(e);var t=document.querySelector("#equalizer");e.forEach(function(e){var a=document.createElement("input");wavesurfer.util.extend(a,{type:"range",min:-40,max:40,value:0,title:e.frequency.value}),a.style.display="inline-block",a.setAttribute("orient","vertical"),t.appendChild(a);var n=function(t){e.gain.value=~~t.target.value};a.addEventListener("input",n),a.addEventListener("change",n)}),wavesurfer.filters=e});
 
-
 audio_file.onchange = function() {
     var file = this.files[0];
-    alert('Hi' + file);
+    wavesurfer.load(file);
+    alert('You are loading ' + file)
     var reader = new FileReader();
     var context = new(window.AudioContext || window.webkitAudioContext)();
     reader.onload = function() {
