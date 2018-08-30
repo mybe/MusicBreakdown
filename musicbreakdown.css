@@ -1,5 +1,6 @@
 /*MusicBreakdown CSS*/
 
-.MB-master { text-align: center; }
+.MB-master { text-align: center; font-family: 'Noto Sans', arial, sans-serif; color: #fff; }
+body { background: #161616; }
 
-#waveform { border: 1px solid black; margin: 5px; }
+#waveform { border: 1px solid white; margin: 5px; }

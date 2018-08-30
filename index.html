@@ -6,11 +6,9 @@
     <title>MusicBreakdown</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Hind:400'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto+Sans'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -27,27 +25,36 @@
     <br>
     <p>please link a song to breakdown</p>
     <br>
-    <input type="text">
+    <input type="text" id="userSongForm">
+    <button onclick="loadSong()" class="btn btn-success">submit song</button>
+    <br>
     <br>
     <p>or, upload an mp3 file</p>
-    <br>
-    <button>upload mp3</button>
+    <input class="btn btn-primary" id="audio_file" type="file" accept="audio/*">
+    
 
     <div id="waveform"></div>
 
     <div class="container" style="text-align: center">
         <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-        <i class="glyphicon glyphicon-play"></i>
-        Play/Pause
+        <i class="far fa-play-circle"></i>
         </button>
 
-        <button onclick="wavesurfer.skipForward(5)">go forward</button>
-        <button onclick="wavesurfer.skipBackward(5)">go backward</button>
-        <button onclick="wavesurfer.stop();wavesurfer.play()">replay</button>
+        <button class="btn btn-primary" onclick="wavesurfer.skipForward(5)">
+            <i class="fas fa-step-forward"></i>
+        </button>
+        <button class="btn btn-primary" onclick="wavesurfer.skipBackward(5)">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button class="btn btn-primary" onclick="wavesurfer.stop();wavesurfer.play()">
+            <i class="fas fa-redo-alt"></i>
+        </button>
         <br>
-        <p>tempo:</p>
-        <p>beats per second:</p>
     </div>
+
+<p>
+  Tempo: <span id="output"></span>
+</p>
 
 </div>
 
