@@ -2,7 +2,7 @@
 
 Get visualization on an audio file.
 
-https://onlava.github.io/Imago/
+https://onlava.github.io/MusicBreakdown/
 
 ## General overview
 
