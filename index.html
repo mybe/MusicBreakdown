@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>MusicBreakdown</title>
@@ -14,7 +15,7 @@
     <link href="style.css" rel="stylesheet">
     <!-- main wavesurfer.js lib -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
-
+</head>
 
 <!-- For IE <= 9 -->
 <!--[if IE]>
@@ -31,9 +32,12 @@
 </script>
 
 <!-- for safari users -->
-<script type="text/javascript">
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { alert('Safari does not allow viewing of the tempo.'); } else { alert("hi"); }
+<script>
+    
+
 </script>
+
+<body>
 
 <canvas id="pixie"></canvas>
 <script src="js/fireflies.js" type="text/javascript"></script>
@@ -53,7 +57,7 @@
 
     <p class="MB-text">File:&nbsp;</p><output id="list"><i>(no file selected)</i></output>
     <audio id="sound" controls></audio>
-    <br><p class="MB-text">Tempo:&nbsp;</p><span id="output"></span>
+    <br><p class="MB-text" id="MB-tempo">Tempo:&nbsp;</p><span id="output"></span>
 
     <div id="waveform" class="rainbow-color"></div>
     <div class="container">
@@ -98,7 +102,7 @@
             <a class="MB-footer-link rainbow-color-footerlink" href="https://github.com/JMPerez/beats-audio-api/">beats-audio-api</a>
         </p>
         <br>
-        <p class="MB-footer-text">v1.1&nbsp;//&nbsp;<a class="MB-footer-link rainbow-color-footerlink" href="https://github.com/onLava/MusicBreakdown">musicbreakdown on github</a></p>
+        <p class="MB-footer-text">v1.2&nbsp;//&nbsp;<a class="MB-footer-link rainbow-color-footerlink" href="https://github.com/onLava/MusicBreakdown">musicbreakdown on github</a></p>
     </footer>
 
 </div>

@@ -1,3 +1,5 @@
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { alert('Safari does not allow viewing of the tempo.'); $('#MB-tempo').css('display', 'none'); } 
+
 var currentPlayPauseIcon = 'play';
 var allowChangePPIcon = 'false';
 function changePlayPauseIcon() {
@@ -101,10 +103,6 @@ var volumeInput = document.querySelector('#volume');
 function showVolBox() { $('.volbox').css('display', 'inline-block'); }
 function hideVolBox() { $('.volbox').css('display', 'none'); }
 
-
-
-
-
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function settingsDropdown() {
@@ -124,5 +122,4 @@ window.onclick = function(event) {
       }
     }
   }
-}
 }
