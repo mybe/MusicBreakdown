@@ -12,7 +12,7 @@ var WIDTH;
     canvas = document.getElementById('pixie');
     $(canvas).attr('width', WIDTH).attr('height', HEIGHT);
     con = canvas.getContext('2d');
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 7; i++) {
         pxs[i] = new Circle();
     pxs[i].reset();
     }
