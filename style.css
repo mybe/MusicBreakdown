@@ -12,7 +12,7 @@ input[type="file"] { display: none; }
 .MB-dragNdrop-text { margin-top: 35px; font-style: italic; }
 .MB-title-text { font-size: 2em; margin: 10px; font-family: 'Advent Pro', arial, sans-serif; }
 .MB-footer-text { display: inline-block; font-size: 15px; font-style: italic; font-family: 'Advent Pro', arial, sans-serif; letter-spacing: 1px; }
-#pixie { top: 0; left: 0; max-height: 100%; position: absolute; }
+#pixie { top: 0; left: 0; max-height: 100%; }
 
 /*Volume control*/
 .volbox { display: none; }
