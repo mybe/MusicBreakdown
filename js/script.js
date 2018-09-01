@@ -1,4 +1,9 @@
-if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { alert('Safari does not allow viewing of the tempo.'); $('#MB-tempo').css('display', 'none'); } 
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { 
+  var tempoID = document.getElementById("MB-tempo");
+  var outputID = document.getElementById("output");
+  tempoID.innerHTML = '<p class="MB-text" id="MB-tempo" style="color: darkred;">Tempo&nbsp;disabled [not compatible on Safari].&nbsp;</p>';
+  $('#output').css('display', 'none');
+} 
 
 var currentPlayPauseIcon = 'play';
 var allowChangePPIcon = 'false';
